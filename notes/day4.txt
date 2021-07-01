@@ -1,0 +1,72 @@
+* 빌드 도구
+	빌드 -> 애플리케이션을 만들기 위해 수행하는 작업(컴파일, 테스트, 배포파일 생성, 문서생성 등 )을 도와준다
+		즉, 빌드 도구는 애플리케이션 생성 과정을 통제하는 프로그램
+
+
+		빌드실행명령서 --------> 빌드 도구 --- 사용 ----> 컴파일러 -------> 실행파일 (java.exe)
+		빌드실행명령서 --------> 빌드 도구 --- 사용 ----> 단위테스트도구 -------> 테스트 및 테스트 보고서 (junit, TestNG 등)
+		빌드실행명령서 --------> 빌드 도구 --- 사용 ----> 패킹 도구 -------> 배포파일 (jar.exe)
+		빌드실행명령서 --------> 빌드 도구 --- 사용 ----> 문서생성도구 -------> API문서 (javadoc.exe)
+
+		*빌드실행명령서 = build.gradle + setting.gradle
+
+		Gradle 빌드 도구는 빌드 스크립트 파일에 적혀있는대로 다른 개발 도구를 사용해서 작업을 수행하고 산출물을 생성한다.
+
+
+				1세대 ----------------> 2세대	----------------> 3세대
+
+	       빌드 도구:		Ant		    Maven	         Gradle (Maven 호환 가능)
+
+	빌드 스크립트 파일 :           build.xml		    pom.xml	         build.gradle
+
+				1세대 -> 2세대 => 의존 라이브러리 자동 다운로드
+				2세대 -> 3세대 => 빌드 제어 명령을 작성할 때 XML 태그 대신에 Groovy와 같은 프로그래밍 언어를 사용 
+						(프로그래밍 언어를 사용하면 태그보다 더 정교하게 빌드 통제 가능)
+
+	
+	Gradle 빌드 도구 사용법
+		-빌드 스크립트 파일의 용도
+			-setting.gradle => 여러 프로젝트에 공통으로 적용할 설정 정보
+			-app/build.gradle => 서브 프로젝트에만 적용하는 빌드 설정 정보
+		-Gradle 기본 작업
+			-init => 현재 폴더를 프로젝트 폴더로 구성
+			-wrapper => Gradle 설치 및 실행 파일 생성
+			-gradle에 플러그인을 장착하면 더 많은 작업 수행 가능
+		-'java' gradle 플러그인 (build.gradle에서 설정)
+			- compileJava
+				-src/main/java 폴더에 있는 소스 파일을 모두 컴파일
+				- build/classes/java/main 폴더에 .class 파일을 둔다
+			- compileTestJava
+				-src/test/java 폴더에 있는 소스 파일을 모두 컴파일
+				- build/classes/java/test 폴더에 .class 파일을 둔다
+			- processResources
+				-src/main/resources 폴더에 있는 파일을 build/resources/main/ 폴더에 복사한다.
+			- processTestResources
+				- src/test/resources 폴더에 있는 파일을 build/resources/test 폴더에 복사한다.
+			-clean
+				-build폴더 삭제
+			-classes
+				-compileJava + processResources 모두 수행
+			-testClasses
+				-classes + compile TestJava + processTestResources 수행
+			-check
+				-test ( testClasses + Classes) + 단위테스트 수행
+			-javadoc
+				-소스 파일에서 javadoc 주석을 추출하여 HTML로 된 API 문서를 생성
+			-build
+				-check+assemble(배포 파일 생성 작업) 수행
+
+		-'application' gradle 플러그인
+			-run
+				-'java'플러그인의 classes 작업을 먼저 실행한다.
+				-그런 후 application 설정에 지정한 클래스를 실행한다.
+			-build
+				- 이 플러그인을 장착한 상태에서 build 작업을 수행하면 고객에게 배포할 수 있는 파일을 build/distributions 폴더에 생성한다.
+				- 자바 프로그램을 실행시킬 수 있는 스크립트 파일도 자동 생성된다.
+
+		- 정리
+			-1) init 작업을 통해 프로젝트 폴더를 준비한다.
+			-2) build.script에 빌드 작업이 들어 있는 플러그인을 설정한다.
+			-3) 각 플러그인의 작업을 실핼할 때 필요한 정보를 등록한다.
+			-4) 프로젝트에서 사용할 외부 라이브러리 파일을 등록한다.
+			-5) 필요한 작업을 실행하여 애플리케이션을 빌드한다.
