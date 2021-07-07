@@ -3,15 +3,55 @@
  */
 package com.eomcs.pms;
 
+import java.sql.Date;
+import java.util.Scanner;
+
 public class App3 {
 
   public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+
+    Date date = new Date(System.currentTimeMillis());
+
+    String prj, content, name;
+    int num, state;
+
     System.out.println("[작업]");
-    System.out.println("프로젝트 : 미니 프로젝트 관리 시스템 개발");
-    System.out.println("번호 : 1");
-    System.out.println("내용 : 요구사항 수집");
-    System.out.println("완료일 : 2020-01-20");
-    System.out.println("상태 : 진행중");
-    System.out.println("담당자 : 홍길동");
+
+    System.out.print("프로젝트 ?");
+    prj = scanner.next();
+
+
+    System.out.print("번호 ?");
+    num = scanner.nextInt();
+
+    System.out.print("내용 ?");
+    content = scanner.next();
+
+    System.out.print("완료일 ?");
+    date = Date.valueOf(scanner.next());
+
+    System.out.print("상태 ? \n0 : 신규\n1: 진행중\n2: 완료\n>");
+    state = scanner.nextInt();
+
+    System.out.print("담당자 ?");
+    name = scanner.next();
+
+    System.out.println("-----------------------");
+
+    System.out.println("프로젝트 : " + prj);
+    System.out.println("번호 : " + num);
+    System.out.println("내용 :"+content);
+    System.out.println("완료일 :"+ date);
+    if (state == 0) {
+      System.out.println("상태 : 신규");
+    }else if (state == 1) {
+      System.out.println("상태 : 진행중");
+    }else {
+      System.out.println("상태 : 완료");
+    }
+    System.out.println("담당자 :" + name);
+
   }
 }

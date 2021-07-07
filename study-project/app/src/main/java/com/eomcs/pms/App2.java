@@ -3,17 +3,46 @@
  */
 package com.eomcs.pms;
 
+import java.sql.Date;
+import java.util.Scanner;
+
 public class App2 {
 
   public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+    Date date = new Date(System.currentTimeMillis());   //System.currentTimeMills 컨닝
+
+    String prjname, content, name, member;
+    int num;
+
+    Date startdate, finishdate;
+
+
+
+
     System.out.println("[프로젝트]");
-    System.out.println("번호 : 1201");
-    System.out.println("프로젝트명 : 미니 프로젝트 관리 시스템 개발");
-    System.out.println("내용 : 소규모 팀을 위한 프로젝트 관리 시스템을 개발한다");
-    System.out.println("시작일 : 2020-01-01");
-    System.out.println("종료일 : 2020-12-31");
-    System.out.println("만든이 : 홍길동");
-    System.out.printf("팀원 : %s%n", "홍길동, 김구, 유관순, 안중근, 윤봉길");
-    System.out.println("zz");
+    System.out.print("번호 ? ");
+    num = scanner.nextInt();
+    System.out.print("프로젝트명 ?");
+    prjname = scanner.next();
+    System.out.print("내용 ?");
+    content = scanner.next();
+    System.out.print("시작일 ?");
+    startdate = Date.valueOf(scanner.next());     //valueOf 컨닝
+    System.out.print("종료일 ?");
+    finishdate = Date.valueOf(scanner.next());    //valueOf 컨닝
+    System.out.print("만든이 ?");
+    name = scanner.next();
+    System.out.print("팀원 ?");
+    member = scanner.next();
+    System.out.println("-------------------------------");
+    System.out.println(num);
+    System.out.println(prjname);
+    System.out.println(content);
+    System.out.println(startdate);
+    System.out.println(finishdate);
+    System.out.println(name);
+    System.out.println(member);
   }
 }

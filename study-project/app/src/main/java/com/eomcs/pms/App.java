@@ -3,16 +3,64 @@
  */
 package com.eomcs.pms;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
 public class App {
 
   public static void main(String[] args) {
+
+    //InputStream keyboard = System.in;
+
+    Scanner scanner = new Scanner(System.in);
+
+    Date date = new Date();
+
+    SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+    String num ,name, mail, pwd, photo, phone;
+
+    //scanner.close();
+
+
     System.out.println("[회원]");
-    System.out.println("번호 : 101");
-    System.out.println("이름 : 홍길동");
-    System.out.println("이메일 : hong@test.com");
-    System.out.println("암호 : 1111");
-    System.out.println("사진 : hong.png");
-    System.out.println("전화 : 010-1111-2222");
-    System.out.println("가입일 : 2021-07-05");
+
+    System.out.print("번호?");
+    num = scanner.nextLine();
+
+    System.out.print("이름?");
+    name = scanner.nextLine();
+
+    System.out.print("이메일?");
+    mail = scanner.nextLine();
+
+    System.out.print("암호?");
+    pwd = scanner.nextLine();
+
+    System.out.print("사진?");
+    photo = scanner.nextLine();
+
+    System.out.print("전화?");
+    phone = scanner.nextLine();
+
+    scanner.close();
+
+    System.out.println("--------------------");
+    System.out.println("번호 : " + num);
+    System.out.println("이름 : " + name);
+    System.out.println("이메일 : " + mail);
+    System.out.println("암호 : " + pwd);
+    System.out.println("사진 : " + photo);
+    System.out.println("전화 : " + phone);
+    System.out.println(dateformat.format(date));
+
+
+
+
+
+
+
+
+
   }
 }

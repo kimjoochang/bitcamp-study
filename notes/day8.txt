@@ -1,0 +1,49 @@
+* 변수
+	-변수 -> 값을 담을 메모리
+
+	ex) int age;
+		->int => 데이터 타입 (값을 저장할 메모리의 종류와 크기)
+		->age => 변수 명 (메모리의 이름)
+
+	ex) int age = 20;
+
+		- = : assignment operator (할당 / 배정)
+
+		- = 20 : initializer (변수 초기화 문장) -> 변수 선언과 동시에 즉시 값을 할당하는 것
+
+		* L-value / R-value
+
+			L-value (Left-value) => 데이터 타입 & 변수 명
+			R-value (Right-value) => 리터럴, 변수, 표현식(ex 사칙연산)
+
+* 데이터 타입
+
+	정수
+		- 1 byte : byte
+		- 2 byte : short
+		- 4 byte : int
+		- 8 byte : long 
+
+	부동소수점
+		- 4 byte : float
+		- 8 byte : double
+
+	논리
+		- int 타입의 메모리를 사용 (4byte)
+		  배열은 byte 타입의 메모리 사용 (1byte)
+
+	문자
+		- 2 byte : char
+
+* system in & scanner
+
+	ex) Scanner scn = new Scanner(System.in);
+
+		Scanner scn -> 리모컨
+		new Scanner -> 물체
+		System.in -> 기능
+
+		즉, 리모컨을 통해 물체의 기능을 수행!
+
+
+		
