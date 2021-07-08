@@ -1,0 +1,16 @@
+- 배열 -> 여러 개의 값을 담을 메모리 / 변수 목록
+
+	-선언 방법 => type [ ] 변수명 = new type [5] ;
+			변수명[] = { , , , ,};
+		ex) int [] number = new int[4];
+		     int [] number = new int[] {1,2,3,4};
+		     int [] number = {1,2,3,4};
+
+		    int 
+
+			* - type [] 변수명; -> 선언 가능
+			  - 값 저장 안 해도 출력 가능 (null값)
+
+				
+		
+		
