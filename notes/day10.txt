@@ -1,0 +1,83 @@
+- 배열 -> 여러 개의 값을 담을 메모리 / 변수 목록
+
+	-선언 방법 => type [ ] 변수명 = new type [5] ;
+			변수명[] = { , , , ,};
+		ex) int [] number = new int[4];
+		     int [] number = new int[] {1,2,3,4};
+		     int [] number = {1,2,3,4};
+
+		    int 
+
+			* - type [] 변수명; -> 선언 가능
+			  - 값 저장 안 해도 출력 가능 (null값)
+
+* 상수
+	- 변수의 값을 고정
+		ex) final int A = 100;
+ 			-> final로 고정 시 구분을 위해 변수명은 대문자 (띄어쓰기는 _로 대체)
+
+				
+		
+* 변수의 종류
+	
+public class Example {
+
+   int a;  ---> 인스턴스 변수   			
+
+   static int b; ---> 클래스 변수
+
+	publuc static void main(String [] args /*로컬변수 = 파라미터*/) {
+		
+		int c; ---> 로컬 변수
+	}
+}	
+
+
+	- 인스턴스 변수 (instance variable)
+		-> new 명령을 사용하여 인스턴스를 생성할 때 준비되는 변수
+
+	- 클래스 변수 (class variable = static variable)
+		 -> 클래스가 로딩될 때 준비되는 변수
+
+	- 로컬 변수 (local variable)
+		 -> 블록을 실행할 때 준비되는 변수
+
+	- 파라미터 (parameter) 
+		-> 메서드의 아규먼트를 받는 로컬 변수이다.	
+			(위의 코드에서 main()의 args 로컬 변수)
+
+*종류에 따른 변수의 사용 범위
+
+public class Example2 {
+	int a;  --> 인스턴스 변수
+
+	static int b; --> 클래스 변수
+
+	public static void main(String[] args) {
+		int c; --> 로컬 변수
+
+		b = 20; --> static이 붙은 블록 (static method = class method)에서는
+			   그 블록 바깥 쪽에 있는 스태틱 변수(클래스 변수)를 사용할 수 있다.
+
+		a = 100; // 오류! --> 그러나 static이 붙지 않은 인스턴스 변수는 사용할 수 없다!!			    
+	}
+	
+	public static void m2(){
+		b = 20; --> static이 붙은 블록 (static method = class method)에서는
+			   그 블록 바깥 쪽에 있는 스태틱 변수(클래스 변수)를 사용할 수 있다.
+	
+		a = 100; // 오류! --> 그러나 static이 붙지 않은 인스턴스 변수는 사용할 수 없다!!
+
+		c = 100; // 오류! --> 다른 메서드에 선언된 로컬 변수를 사용할 수 없다
+		System.out.println(args[0]); --> 다른 메서드에 선언된 로컬 변수를 사용할 수 없다
+	}	
+
+	public void m3() {
+		// static 이 붙지 않은 블록에서는 
+		    그 블록 바깥 쪽에 선언된 변수를 모두 접근할 수 있다.
+		b= 20;  --> ok
+		a =100; --> ok
+		c = 100; // 오류! --> 다른 메서드에 선언된 로컬 변수를 사용할 수 없다
+		System.out.println(args[0]); --> 다른 메서드에 선언된 로컬 변수를 사용할 수 없다
+	}			
+}
