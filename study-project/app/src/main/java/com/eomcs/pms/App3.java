@@ -3,81 +3,83 @@ package com.eomcs.pms;
 import java.sql.Date;
 import java.util.Scanner;
 
-//1) 배열 사용 전
-//2) 배열 사용 후
-//3) 반복문 적용 : while 문
-//4) 반복문 적용 : for 문
-//5) 여러 문장에서 반복해서 사용하는 값은 변수에 담아서 사용한다.
-//6) 조회용으로만 사용할 변수라면 상수로 선언한다.
-//7) 특정 조건에 따라 반복을 멈춘다.
-//8) 날짜의 출력형식을 "yyyy-MM-dd"로 변경한다.
-
 public class App3 {
 
   public static void main(String[] args) {
-
-    int i = 0;
-    int size = 0;
-    final int MAX_LENGTH = 5;
-
-    Scanner scn = new Scanner(System.in);
-    //Date date= new Date(System.currentTimeMillis());
-
-
-
-
-    int [] num = new int[MAX_LENGTH];
-    String [] prj = new String[MAX_LENGTH];
-    String [] content = new String[MAX_LENGTH];
-    Date [] finishDate = new Date[MAX_LENGTH];
-    int[] state = new int[MAX_LENGTH];
-    String [] name = new String[MAX_LENGTH];
-    String [] member = new String[MAX_LENGTH];
-
-
-
     System.out.println("[작업]");
 
-    while (i < MAX_LENGTH) {
-      size = size +1;
-      System.out.print("번호 ? ");
-      num[i] = scn.nextInt();
-      System.out.print("프로젝트명 ?");
-      prj[i] = scn.next();
-      System.out.print("내용 ? ");
-      content[i] = scn.next();
-      System.out.print("마감일 ?");
-      finishDate[i] = Date.valueOf(scn.next());
-      System.out.print("상태 ?\n0: 신규\n1: 진행중\n2: 완료\n>");
-      state[i] = scn.nextInt();
-      System.out.print("담당자 ?");
-      name[i] = scn.next();
-      System.out.println();
-      i++;
-      System.out.println("계속 입력하시겠습니까? (y/N)");
-      String answer = scn.next();
-      if(answer.equalsIgnoreCase("N")||answer.equals("")) {
+    Scanner keyboardScan = new Scanner(System.in);
 
+    // 최대 100개의 작업 정보를 저장할 메모리 준비
+    // => 배열의 크기를 미리 변수에 저장하여 사용한다.
+    // => 코드 중간에 배열의 크기가 바뀌지 않도록 변수의 값 변경을 제한한다.
+    // => 한 번 설정된 값은 바꿀 수 없음을 표시하기 위해 변수명을 대문자로 표현한다.
+    final int LENGTH = 100;
+    
+    int[] no = new int[LENGTH];
+    String[] content = new String[LENGTH];
+    Date[] deadline = new Date[LENGTH];
+    String[] owner = new String[LENGTH];
+    int[] status = new int[LENGTH];
+
+    System.out.print("프로젝트? ");
+    String project = keyboardScan.nextLine();
+    System.out.println();
+
+    int size = 0;
+
+    for (int i = 0; i < LENGTH; i++) {
+      System.out.print("번호? ");
+      no[i] = Integer.parseInt(keyboardScan.nextLine());
+
+      System.out.print("내용? ");
+      content[i] = keyboardScan.nextLine();
+
+      System.out.print("마감일? ");
+      deadline[i] = Date.valueOf(keyboardScan.nextLine());
+
+      System.out.println("상태?");
+      System.out.println("0: 신규");
+      System.out.println("1: 진행중");
+      System.out.println("2: 완료");
+      System.out.print("> ");
+      status[i] = Integer.valueOf(keyboardScan.nextLine());
+
+      System.out.print("담당자? ");
+      owner[i] = keyboardScan.nextLine();
+
+      size++;
+      System.out.println(); // 빈 줄 출력
+
+      System.out.print("계속 입력하시겠습니까?(y/N) ");
+      String str = keyboardScan.nextLine();
+      if (!str.equalsIgnoreCase("y")) {
         break;
       }
+      System.out.println(); // 빈 줄 출력
     }
 
-    System.out.println("---------------------------------------------");
-    for (int j = 0; j < size; j++) {
-      switch (state[j]) {
+    keyboardScan.close();
+
+    System.out.println("--------------------------------");
+
+    System.out.printf("[%s]\n", project);
+
+    for (int i = 0; i < size; i++) {
+      String stateLabel = null;
+      switch (status[i]) {
         case 1:
-          System.out.printf("%d, %s, %s, %s, %s", num[j], prj[j], finishDate[j], "신규", name[j]);
+          stateLabel = "진행중";
           break;
         case 2:
-          System.out.printf("%d, %s, %s, %s, %s", num[j], prj[j], finishDate[j], "진행중", name[j]);
+          stateLabel = "완료";
           break;
-        case 3:
-          System.out.printf("%d, %s, %s, %s, %s", num[j], prj[j], finishDate[j], "완료", name[j]);
-          break;
+        default:
+          stateLabel = "신규";
       }
-
+      // 번호, 작업명, 마감일, 프로젝트, 상태, 담당자
+      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
+          no[i], content[i], deadline[i], stateLabel, owner[i]);
     }
-
-
   }
 }

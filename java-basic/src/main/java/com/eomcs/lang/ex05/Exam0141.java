@@ -4,11 +4,10 @@ package com.eomcs.lang.ex05;
 //
 public class Exam0141 {
   public static void main(String[] args) {
-    
+
     // 연산을 수행한 후 생성된 결과도 피연산자와 같은 타입이다.
-    
     int i = 5;
-    int j = 2;
+    float j = 2f;
     float r = i / j; // int와 int의 연산 결과는 항상 int이다.
     // 따라서 r 변수에 넣기 전에 
     // 이미 결과는 정수 2가 된다.
@@ -19,7 +18,7 @@ public class Exam0141 {
     // 해결책!
     // - 변수에 들어 있는 값을 다른 타입으로 바꿔라.
     //   "형변환(type conversion=type casting)"하라!
-    r = (float)i / (float)j; // float / float = float
+    r = i / j; // float / float = float
     // i / j의 값은 2.5가 되고
     // r에 저장되는 것은 2.5이다.
     System.out.println(r);                         

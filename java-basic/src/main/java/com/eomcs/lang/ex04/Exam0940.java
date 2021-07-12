@@ -16,15 +16,15 @@ public class Exam0940 {
     // 1) 큰 메모리의 값이 작은 메모리에 충분히 들어가는 경우
     // short ==> byte
     byte b2 = (byte)s; // 명시적 형변환
-    System.out.println(b2);
+    //    System.out.println(b2);
 
     // int ==> byte
     b2 = (byte)i; // 명시적 형변환
-    System.out.println(b2);
+    //    System.out.println(b2);
 
     // long ==> byte
     b2 = (byte)l; // 명시적 형변환
-    System.out.println(b2);
+    //    System.out.println(b2);
 
     // 2) 큰 메모리의 값이 작은 메모리에 들어 갈 수 없는 경우
     // => 앞 쪽 바이트의 값이 짤려서 들어간다.
