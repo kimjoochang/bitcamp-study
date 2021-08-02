@@ -1,75 +1,146 @@
 package com.eomcs.pms;
 
-//1) 변경준비
-//2) 사용자에게 명령 프롬프트 출력
-//3) 사용자의 명령을 입력 받아 출력
-//4) 명령어 입력 받아 출력하는 것을 무한반복
-//5) exit나 quit 명령을 입력하면 반복 실행 중지
-//6) /member/add와 /member/list 명령을 구분
-//7) /member/add 명령 처리
-//8) /member/list 명령 처리
+import com.eomcs.pms.handler.BoardHandler;
+import com.eomcs.pms.handler.MemberHandler;
+import com.eomcs.pms.handler.ProjectHandler;
+import com.eomcs.pms.handler.TaskHandler;
+import com.eomcs.util.Prompt;
+
 public class App {
 
   public static void main(String[] args) {
 
+    BoardHandler boardHandler = new BoardHandler();
+    MemberHandler memberHandler = new MemberHandler();
+    ProjectHandler projectHandler = new ProjectHandler(memberHandler);
+    TaskHandler taskHandler = new TaskHandler(memberHandler);
 
-    //    System.out.println("[회원]");
-    //
-    //    Scanner keyboardScan = new Scanner(System.in);
-    //
-    //    // 최대 입력 개수
-    //    final int LENGTH = 100;
-    //
-    //    int[] no = new int[LENGTH];
-    //    String[] name = new String[LENGTH];
-    //    String[] email = new String[LENGTH];
-    //    String[] password = new String[LENGTH];
-    //    String[] photo = new String[LENGTH];
-    //    String[] tel = new String[LENGTH];
-    //    Date[] registeredDate = new Date[LENGTH];
-    //
-    //    int size = 0;
-    //
-    //    for (int i = 0; i < LENGTH; i++) {
-    //      System.out.print("번호? ");
-    //      no[i] = Integer.parseInt(keyboardScan.nextLine());
-    //
-    //      System.out.print("이름? ");
-    //      name[i] = keyboardScan.nextLine();
-    //
-    //      System.out.print("이메일? ");
-    //      email[i] = keyboardScan.nextLine();
-    //
-    //      System.out.print("암호? ");
-    //      password[i] = keyboardScan.nextLine();
-    //
-    //      System.out.print("사진? ");
-    //      photo[i] = keyboardScan.nextLine();
-    //
-    //      System.out.print("전화? ");
-    //      tel[i] = keyboardScan.nextLine();
-    //
-    //      registeredDate[i] = new java.sql.Date(System.currentTimeMillis());
-    //
-    //      size++;
-    //      System.out.println(); // 빈 줄 출력
-    //
-    //      System.out.print("계속 입력하시겠습니까?(y/N) ");
-    //      String str = keyboardScan.nextLine();
-    //      if (!str.equalsIgnoreCase("y")) {
-    //        break;
-    //      }
-    //      System.out.println(); // 빈 줄 출력
-    //    }
-    //
-    //    keyboardScan.close();
-    //
-    //    System.out.println("--------------------------------");
-    //
-    //    for (int i = 0; i < size; i++) {
-    //      // 번호, 이름, 이메일, 전화, 가입일
-    //      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-    //          no[i], name[i], email[i], tel[i], registeredDate[i]);
-    //    }
+    String input = null;
+
+    while (true) {
+
+      System.out.println("[메인]");
+      System.out.println("1. 게시판");
+      System.out.println("2. 회원");
+      System.out.println("3. 프로젝트");
+      System.out.println("4. 작업");
+      System.out.println("0. 종료");
+      int num = Prompt.inputInt("메인 > ");
+      if(num==0) {
+        input = "quit";
+      }else if(num == 1) {
+        System.out.println("[메인 / 게시판]");
+        System.out.println("1. 등록");
+        System.out.println("2. 목록");
+        System.out.println("3. 상세보기");
+        System.out.println("4. 변경");
+        System.out.println("5. 삭제");
+        System.out.println("0. 이전 메뉴");
+        num = Prompt.inputInt("게시판 > ");
+        if( num == 0) {
+          continue;
+        }
+      }
+
+
+
+
+
+
+      if (input.equals("exit") || input.equals("quit")) {
+        System.out.println("안녕!");
+        break;
+      } else if (input.equals("/member/add")) {
+        memberHandler.add();
+
+      } else if (input.equals("/member/list")) {
+        memberHandler.list();
+
+      } else if (input.equals("/member/detail")) {
+        memberHandler.detail();
+
+      } else if (input.equals("/member/update")) {
+        memberHandler.update();
+
+      } else if (input.equals("/member/delete")) {
+        memberHandler.delete();
+
+      }  else if (input.equals("/project/add")) {
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.add(memberHandler); // 이전 코드 
+        projectHandler.add();
+
+      }  else if (input.equals("/project/list")) {
+        projectHandler.list();
+
+      }  else if (input.equals("/project/detail")) {
+        projectHandler.detail();
+
+      }  else if (input.equals("/project/update")) {
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.update(memberHandler); // 이전 코드
+        projectHandler.update();
+
+      }  else if (input.equals("/project/delete")) {
+        projectHandler.delete();
+
+      }  else if (input.equals("/task/add")) {
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.add(memberHandler); // 이전 코드
+        taskHandler.add();
+
+      }  else if (input.equals("/task/list")) {
+        taskHandler.list();
+
+      }  else if (input.equals("/task/detail")) {
+        taskHandler.detail();
+
+      }  else if (input.equals("/task/update")) {
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.update(memberHandler); // 이전 코드
+        taskHandler.update();
+
+      }  else if (input.equals("/task/delete")) {
+        taskHandler.delete();
+
+      }  else if (input.equals("/board/add")) {
+        boardHandler.add();
+
+      }  else if (input.equals("/board/list")) {
+        boardHandler.list();
+
+      }  else if (input.equals("/board/detail")) {
+        boardHandler.detail();
+
+      }  else if (input.equals("/board/update")) {
+        boardHandler.update();
+
+      }  else if (input.equals("/board/delete")) {
+        boardHandler.delete();
+
+      } else {
+        System.out.println("실행할 수 없는 명령입니다.");
+      }
+      System.out.println();
+    }
+
+    // Prompt 가 소유하고 관리하고 있는 자원을 닫으라고 명령한다. 
+    Prompt.close();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

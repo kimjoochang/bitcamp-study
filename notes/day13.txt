@@ -1,0 +1,13 @@
+- 메서드(method) = 함수(function)
+    => 소스 코드를 관리하기 쉽게 기능 단위로 묶어 놓은 것
+
+    - 메서드 정의
+        -> ex)
+            - int plus (int a , int b) {                   --------> 변수명 : plus
+                int sum = a+b;                                       파라미터 : a , b 
+                return sum;
+            }
+
+    - 메서드 호출
+        -> ex)
+            int result = plus(100,200); 
