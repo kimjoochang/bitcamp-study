@@ -1,19 +1,21 @@
 package com.eomcs.pms.handler;
 
-public class ArrayList {
+public class ArrayList implements List {
+
   static final int MAX_LENGTH = 5;
+
   Object[] list = new Object[MAX_LENGTH];
   int size = 0;
 
-  public void add(Object object) {
+  public void add(Object obj) {
     if (size == list.length) {
       Object[] arr = new Object[list.length + (list.length >> 1)];
       for (int i = 0; i < size; i++) {
         arr[i] = list[i];
       }
-      list = arr; // boards에 저장된 옛날 배열 주소를 버리고 새 배열 주소를 저장한다.
+      list = arr;
     }
-    this.list[this.size++] = list;
+    this.list[this.size++] = obj;
   }
 
   public Object[] toArray() {

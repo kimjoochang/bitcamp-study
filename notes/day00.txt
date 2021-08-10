@@ -1,0 +1,14 @@
+### 추상클래스
+
+## 추상클래스와 인스턴스
+
+# 추상 클래스의 용도
+    - 서브 클래스들이 가져야 할 공통 변수나 메서드를 제공
+
+
+
+* 정렬 - 버블, 퀵, Insertion, Merge, selection
+  자료구조 - linkedList, stack, queue
+  탐색 - 2진탐색트리
+  해시 - 해시테이블
+  참고 : visu algo
