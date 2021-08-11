@@ -12,3 +12,24 @@
   탐색 - 2진탐색트리
   해시 - 해시테이블
   참고 : visu algo
+
+
+  ### Hash
+
+  해시 알고리즘 : 해시 값을 뽑아내는 식 -> MD5, SHA, PGP 등
+
+
+  ### auto-boxing 과 auto-unboxing
+
+  1. auto-boxing -> wrapper 객체 자동 생성
+    ex) Integer obj = 100;
+        -> 우항을 컴파일러가 다음 문장으로 변환
+            Integer.valueOf(100);
+        즉, wrapper 객체의 주소가 i에 저장!
+
+  2. auto-unboxing -> wrapper 객체에 들어있는 값을 자동으로 꺼낸다.
+    ex) Integer obj = Integer.valueOf(100);
+        int i = obj;
+          -> 우항을 컴파일러가 다음 문장으로 변환
+             obj.intValue();
+            즉, wrapper 객체에 보관된 int 값을 꺼내 i에 저장한다.
