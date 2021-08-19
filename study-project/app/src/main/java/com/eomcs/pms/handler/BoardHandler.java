@@ -58,7 +58,9 @@ public class BoardHandler {
     System.out.printf("내용: %s\n", board.getContent());
     System.out.printf("작성자: %s\n", board.getWriter());
     System.out.printf("등록일: %s\n", board.getRegisteredDate());
-    System.out.printf("조회수: %d\n", board.getViewCount()+1);
+
+    board.setViewCount(board.getViewCount() + 1);
+    System.out.printf("조회수: %d\n", board.getViewCount());
   }
 
   public void update() {
