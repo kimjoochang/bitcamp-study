@@ -1,0 +1,26 @@
+##리팩토링 - 클래스 이동
+
+리팩토링 -> 유지보수가 쉽도록 클래스의 구조를 변경하는 작업
+
+com.eomcs  <- 회사 도메인 명을 사용
+        -pms  <- 서비스명, 제품명 사용
+            -domain  <- 역할명 사용
+            -handler <- 역할명 사용
+                -List
+                -AbstractList
+                -ArrayList
+                -LinkedList
+                -Stack
+                -BoardHandler
+                -ProjectHandler
+       
+        -util  <- 특정제품이나 서비스에 종속되지않고 공통으로 이용하는 클래스를 둔다.
+            -prompt
+
+
+Iterator 패턴
+    -> 데이터 조회 기능을 캡슐화
+
+    * 캡슐화 -> 코드를 감추고 그 기능을 이용할 수 있게 메서드를 제공
+
+데이터를 꺼내는 일을 하는 객체 == Iterator
