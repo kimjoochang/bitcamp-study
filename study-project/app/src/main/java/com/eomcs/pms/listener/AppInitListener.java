@@ -1,30 +1,50 @@
 package com.eomcs.pms.listener;
 
-import java.sql.Date;
-import java.util.Map;
-import com.eomcs.context.ApplicationContextListener;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import com.eomcs.pms.dao.MemberDao;
 
-// 애플리케이션이 시작하거나 종료할 때 보고를 받는 객체
-// => ApplicationContextListener 규칙에 따라 클래스를 정의한다.
-// 
-public class AppInitListener implements ApplicationContextListener{
+@WebListener
+public class AppInitListener implements ServletContextListener {
+
+  SqlSession sqlSession = null;
 
   @Override
-  public void contextInitialized(Map<String, Object> params) {
-    // 애플리케이션이 시작하면 이 메서드가 호출될 것이다.
-    System.out.println("************************************");
-    System.out.println("* 미니 프로젝트 관리시스템 ver 1.0 *");
-    System.out.println("*      (C)Copyright BitCamp        *");
-    System.out.println("************************************");
+  public void contextInitialized(ServletContextEvent sce) {
+    System.out.println("애플리케이션 시작됨!");
+
+    try {
+      // Mybatis의 SqlSession 객체 준비
+      sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
+          "com/eomcs/pms/conf/mybatis-config.xml")).openSession();
+
+      // SqlSession 객체를 통해 MemberDao 구현체를 자동 생성한다.
+      MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+
+      // 모든 웹 애플리케이션의 컴포넌트(서블릿, 리스너, 필터)가 공유할 객체를 두는 저장소
+      ServletContext 웹애플리케이션공용저장소 = sce.getServletContext();
+
+      // 웹 애플리케이션 공용 저장소에 DAO 객체를 보관한다.
+      // => 이 저장소에 보관된 객체는 서블릿에서 사용할 것이다.
+      웹애플리케이션공용저장소.setAttribute("memberDao", memberDao);
+
+      웹애플리케이션공용저장소.setAttribute("sqlSession", sqlSession);      
+
+    } catch (Exception e) {
+      System.out.println("DAO 객체 준비 중 오류 발생!");
+    }
+
   }
 
   @Override
-  public void contextDestroyed(Map<String, Object> params) {
-    // 애플리케이션이 종료되기 직전에 이 메서드가 호출될 것이다.
-    System.out.println("************************************");
-    System.out.println("* 미니 프로젝트 관리시스템 종료!   *");
-    System.out.printf("*   마지막 실행일 : %s     *\n", new Date(System.currentTimeMillis()));
-    System.out.println("************************************");
-  }
+  public void contextDestroyed(ServletContextEvent sce) {
+    System.out.println("애플리케이션 종료됨!");
 
+    sqlSession.close();
+  }
 }
