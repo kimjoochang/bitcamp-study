@@ -82,19 +82,21 @@
 
 
 <!-- 서블릿 등록 -->
-<!-- 
+<!--  
   <servlet>
     <servlet-name>s01</servlet-name>
     <servlet-class>com.eomcs.web.ex01.Servlet01</servlet-class>
   </servlet>
- -->
+-->
+
 <!-- 서블릿을 실행할 때 사용할 URL path를 설정 -->  
-  <!-- 
+<!--  
   <servlet-mapping>
     <servlet-name>s01</servlet-name>
     <url-pattern>/ohora/haha</url-pattern>
   </servlet-mapping>
- -->
+-->
+
 <!--    
   <servlet>
     <servlet-name>Servlet02</servlet-name>
@@ -165,14 +167,6 @@
   </servlet>
 -->
 
-  <servlet>
-    <servlet-name>ex12.s01</servlet-name>
-    <servlet-class>com.eomcs.web.ex12.Servlet01</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ex12.s01</servlet-name>
-    <url-pattern>/ex12/s01</url-pattern>
-  </servlet-mapping>
 
   <!-- 세션의 타임아웃 설정하기 
        => 단위는 분(minute)이다. -->
