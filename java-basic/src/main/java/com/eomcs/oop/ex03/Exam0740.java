@@ -12,13 +12,18 @@ public class Exam0740 {
     // - 선언된 순서대로 생성자의 앞 부분에 삽입된다.
     // - 바이트코드(Exam0740$A.class)를 확인해 보라!
     {
-
+      this.a = 101;
+      System.out.println("첫 번째 인스턴스 초기화 블록");
     }
 
     {
+      this.a = 102;
+      System.out.println("두 번째 인스턴스 초기화 블록");
     }
 
     {
+      this.a = 103;
+      System.out.println("세 번째 인스턴스 초기화 블록");
     }
 
     A() {
@@ -31,19 +36,11 @@ public class Exam0740 {
       // this.a = 103;
       // System.out.println("세 번째 인스턴스 초기화 블록");
 
-      this.a = 101;
-      System.out.println("첫 번째 인스턴스 초기화 블록");
-
-      this.a = 102;
-      System.out.println("두 번째 인스턴스 초기화 블록");
-
-      this.a = 103;
-      System.out.println("세 번째 인스턴스 초기화 블록");
-
       System.out.println("A()");
       b = 200;
       c = 300;
     }
+
   }
 
   public static void main(String[] args) {

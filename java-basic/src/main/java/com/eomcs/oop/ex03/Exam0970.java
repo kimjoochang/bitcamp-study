@@ -10,7 +10,6 @@ public class Exam0970 {
     int widthRes; // 해상도 너비
     int heightRes = 1080; // 해상도 높이
 
-
     Monitor() {
       // 다른 생성자를 호출할 수 있다.
       // 단 첫 문장으로 와야 한다.
@@ -34,7 +33,6 @@ public class Exam0970 {
     }
 
     void display() {
-      //      this(); // 일반 메서드에서는 생성자를 호출할 수 없다.
       System.out.println("----------------------------------");
       System.out.printf("밝기(%d)\n", this.bright);
       System.out.printf("명암(%d)\n", this.contrast);
@@ -58,10 +56,6 @@ public class Exam0970 {
     m1.display();
     m2.display();
     m3.display();
-
-    // 주의!
-    // 임의로 생성자를 호출할 수 없다.
-    //    m1.Monitor(); // 컴파일 오류!
   }
 }
 

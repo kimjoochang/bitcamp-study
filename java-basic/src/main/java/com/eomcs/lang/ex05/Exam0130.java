@@ -16,16 +16,16 @@ public class Exam0130 {
     // - 리터럴끼리 산술 연산한 결과도 리터럴로 간주한다.
     // - 그 결과 값이 변수의 범위 내의 값이면 허락한다.
 
-    //System.out.println(b);
+    System.out.println(b);
     // - 이유? 리터럴 값은 컴파일 단계에서 그 값이 얼마인지 확인할 수 있기 때문이다.
     // - 변수의 경우는 컴파일 단계에서 값을 확인할 수 없다.
 
-    byte x = 127, y = 127, z;
+    byte x = 5, y = 6, z;
     z = x; // OK!
     z = y; // OK!
 
-    z = (byte)(x + y); // 컴파일 오류!
-    System.out.println(z);
+    //    z = x + y; // 컴파일 오류!
+    //
     // "자바의 정수 연산은 최소 단위가 4바이트이다."
     // "그래서 byte나 short의 연산 단위가 기본으로 4바이트이다."
     //
@@ -47,7 +47,7 @@ public class Exam0130 {
     short s3;
     s3 = s1; // OK!
     s3 = s2; // OK!
-    //s3 = s1 + s2; // 컴파일 오류!
+    //    s3 = s1 + s2; // 컴파일 오류!
 
     int s4 = s1 + s2;
     System.out.println(s4);

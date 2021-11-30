@@ -24,7 +24,7 @@ public class Test004 {
   }
 
   public static void main(String[] args) {
-    int[] values = {7, 4, 8};
+    int[] values = {2, 4, 8};
     System.out.println(divisorsPairs(values));
 
   }

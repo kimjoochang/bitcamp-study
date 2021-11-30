@@ -7,7 +7,6 @@ public class Exam0410 {
     void m() {
       System.out.println("A의 m()");
     }
-    int a = 1;
   }
 
   static class A2 extends A {
@@ -16,8 +15,6 @@ public class Exam0410 {
     void m() {
       System.out.println("A2의 m()");
     }
-    int a =3;
-    int b = 2;
 
     void test() {
       // this 레퍼런스로 메서드를 호출하면,

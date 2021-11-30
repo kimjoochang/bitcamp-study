@@ -17,13 +17,13 @@ public class Test001 {
       if ((n % 2) == 0) {
         result++;
       }
-      n /= 10;
+      n %= 10;
     }
     return result;
   }
-
+  
   public static void main(String[] args) {
-    System.out.println(countEventNumber(2222135));
+    System.out.println(countEventNumber(1238694636));
 
   }
 

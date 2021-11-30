@@ -2,7 +2,6 @@ package com.eomcs.lang.ex04;
 
 //# 형변환 - 정수 변수 ==> 부동소수점 변수
 //
-// 즉 정수변수 -> 부동소수점 변수에 넣을 때 값을 그대로 저장하지만 유효자릿수를 넘는 정수는 짤림
 public class Exam0910 {
   public static void main(String[] args) {
     byte b = 100;

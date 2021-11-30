@@ -12,11 +12,6 @@ public class Exam01 {
     // 1) ToolA 객체 사용하기
     use(new ToolA());
 
-    ToolA a = new ToolA();
-    a.m1();
-
-
-
     // 2) ToolB 객체 사용하기
     use(new ToolB());
   }

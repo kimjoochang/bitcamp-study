@@ -13,7 +13,6 @@ public class Exam0110 {
     // 레퍼런스 선언
     A.X obj;
 
-
     // 인스턴스 생성
     obj = new A.X();
   }
